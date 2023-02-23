@@ -14,6 +14,7 @@ class Solution{
         return s
     }
 };
+//LEETCODE 541 COPY ONLY THE CLASS AND THE CHANGE THE SOLVE TO PREDEFINED FUNCION
 int main()
 {
     Solution obj1;
