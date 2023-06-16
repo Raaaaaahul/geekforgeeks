@@ -22,8 +22,18 @@ int solve(int arr[],int n)
 int main()
 {
     
-    int arr[] = { 1, 2, 3};
-    int size = sizeof(arr) / sizeof(arr[0]);
-    cout << solve(arr, size);
+    int t;
+    cin>>t;
+    while(t--)
+    {
+        int size;
+        cin>>size;
+        int arr[size];
+        for(int i=0;i<size;i++)
+        {
+            cin>>arr[i];
+        }
+        cout<<solve(arr,size)<<endl;
+    }
     return 0;
 }

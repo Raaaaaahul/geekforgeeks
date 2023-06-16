@@ -1,37 +1,16 @@
-#include <bits/stdc++.h>
+#include<bits/stdc++.h>
 using namespace std;
-vector<string> solve(string s)
+void solve(string &s,string curr = "", int i=0)
 {
-    int n = s.length();
-    // string sub = "";
-    vector<string> ans;
-    for (int num = 0; num < (1 << n); num++)
-    {
-        string sub = "";
-        for (int i = 0; i < n; i++)
-        {
-            if (num & (1 << i))
-            {
-                sub += s[i];
-            }
-        }
-        if (sub.length() >= 0)
-        {
-            ans.push_back(sub);
-        }
-    }
-
-    // sort(ans.begin(), ans.end());
-    return ans;
+    if(i==s.length())
+        cout<<s<<endl;
+        return;
+    solve(s,curr,i+1);
+    solve(s,curr + s[i],i+1);
 }
 int main()
 {
-    string s;
-    cin >> s;
-    vector<string> ans = solve(s);
-    for (auto it : ans)
-    {
-        cout << it << endl;
-    }
+    string s = "abc";
+    solve(s);
     return 0;
 }
