@@ -1,0 +1,33 @@
+import asyncio
+import time
+
+
+class HelpIT:
+    async def main(self):
+        start = time.perf_counter()
+        nums = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+  
+        # for num in nums:
+        eveco = [self.helpeve(num) for num in nums]
+        # for num in nums:
+        # if num % 2 == 0:
+        # await asyncio.gather(*eveco)
+        # else:
+        #     print("odd")
+        await asyncio.gather(*eveco)
+        print(time.perf_counter() - start)
+
+    async def helpeve(self, num):
+        if num % 2 == 0:
+            await self.eve(num)
+        else:
+            print("odd")
+
+    async def eve(self, num):
+        num = num + 2
+        await asyncio.sleep(2)
+        print(num)
+
+
+help_it = HelpIT()
+asyncio.run(help_it.main())

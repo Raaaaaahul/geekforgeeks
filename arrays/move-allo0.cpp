@@ -15,7 +15,7 @@ vector<int> solve(vector<int> arr)
 }
 int main()
 {
-    vector<int> arr ={8,5,0,10,0};
+    vector<int> arr ={0,1,0,3,12};
     vector<int> ans = solve(arr);
     for(auto i = ans.begin();i!=ans.end();i++)
     {
