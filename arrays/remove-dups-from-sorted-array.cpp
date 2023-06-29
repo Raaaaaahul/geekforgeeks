@@ -15,8 +15,10 @@ int solve(vector<int> arr)
 }
 int main()
 {
-    vector<int> arr = {10,10,10};
+    vector<int> arr = {10,10,10,20};
     int ans = solve(arr);
+
     cout<<ans; 
+    cout<<endl;
     return 0;
 }

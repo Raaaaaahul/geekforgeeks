@@ -28,9 +28,11 @@ Node* reverse(Node* head)
     Node* curr = head;
     while(curr!=NULL)
     {
+        // swap(curr->next,curr->prev)
         temp = curr->prev;
         curr->prev = curr->next;
         curr->next = temp;
+        //since next is now prev we use curr->prev to move the pointer 
         curr = curr->prev;
     }
     return temp->prev;
