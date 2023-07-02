@@ -58,6 +58,46 @@ bool detectCycle(node* head)
     }
     return false;
 }
+bool floydCycle(node* head)
+{
+    node* slow = head;
+    node* fast = head;
+    while(fast!=NULL and fast->next!=NULL)
+    {
+        slow = slow->next;
+        fast = fast->next->next;
+        if(slow==fast)
+        {
+            return true;
+        }
+    }
+    return false;
+}
+void detectAndRemove(node* head)
+{
+    node* slow = head;
+    node* fast = head;
+    while(fast!=NULL and fast->next!=NULL)
+    {
+        slow = slow->next;
+        fast = fast->next->next;
+        if(slow==fast)
+        {
+            break;
+        }
+    }
+    if(slow!=fast)
+    {
+        return;
+    }
+    slow = head;
+    while(slow->next!=fast->next)
+    {
+        slow = slow->next;
+        fast = fast->next;
+    }
+    fast->next = NULL;
+}
 int main()
 {
     node* head = new node(1);
