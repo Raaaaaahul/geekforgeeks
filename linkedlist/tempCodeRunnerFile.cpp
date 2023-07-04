@@ -9,12 +9,6 @@ struct Node{
         next=NULL;
     }
 };
-Node* begInsert(Node* head,int val)
-{
-    Node* temp = new Node(val);
-    temp->next = head;
-    return temp;
-}
 
 void traversal(Node* head)
 {
@@ -25,12 +19,51 @@ void traversal(Node* head)
     }
     cout<<endl;
 }
+
+
+Node* insEnd(Node* head,int val)
+{
+    Node* temp = new Node(val);
+    if(head==NULL)
+    {
+        return temp;
+    }
+    Node* curr = head;
+    while(curr->next!=NULL)
+    {
+        curr = curr->next;
+    }
+    curr->next = temp;
+    return head;
+}
+void printmiddle(Node* head)
+{
+    if(head==NULL)
+    {
+        return;
+    }
+    Node* slow = head;
+    Node* fast = head;
+    while(fast!=NULL and fast->next->next!=NULL)
+    {
+        slow = slow->next;
+        fast = fast->next->next;
+    }
+    cout<<slow->data;
+}
 int main()
 {
-    Node* head = NULL;
-    head = begInsert(head,10);
-    head = begInsert(head,20);
-    head = begInsert(head,30);
+    Node* head = new Node(10);
+    int n = 4;
+    while(n--)
+    {
+        int a;
+        cin>>a;
+        head = insEnd(head,a);
+    }
     traversal(head);
-   return 0;
+    printmiddle(head);    
+    // head = oddEvenList(head);
+    // traversal(head);
+    return 0;
 }

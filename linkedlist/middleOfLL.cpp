@@ -20,6 +20,7 @@ void traversal(Node* head)
     cout<<endl;
 }
 
+
 Node* insEnd(Node* head,int val)
 {
     Node* temp = new Node(val);
@@ -43,7 +44,7 @@ void printmiddle(Node* head)
     }
     Node* slow = head;
     Node* fast = head;
-    while(fast!=NULL and fast->next!=NULL)
+    while(fast!=NULL and fast->next->next!=NULL)
     {
         slow = slow->next;
         fast = fast->next->next;
@@ -62,5 +63,7 @@ int main()
     }
     traversal(head);
     printmiddle(head);    
+    // head = oddEvenList(head);
+    // traversal(head);
     return 0;
 }
