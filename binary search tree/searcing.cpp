@@ -51,6 +51,19 @@ bool iterSearch(node* root,int val)
     }
     return false;
 }
+void inorder(node* root)
+{
+    if(root)
+    {
+        inorder(root->left);
+        cout<<root->key<<" ";
+        inorder(root->right);
+    }
+}
+void recover(node* root)
+{
+    
+}
 int main()
 {
     node* root = new node(15);
@@ -58,10 +71,8 @@ int main()
     root->left->left = new node(3);
     root->right = new node(20);
     root->right->left = new node(18);
-    root->right->left->left = new node(16);
-    root->right->right = new node(80);
-
-    cout<<search(root,16)<<endl;
-    cout<<iterSearch(root,18)<<endl;
+    root->right->left->left = new node(80);
+    root->right->right = new node(16);
+    inorder(root);
     return 0;
 }
