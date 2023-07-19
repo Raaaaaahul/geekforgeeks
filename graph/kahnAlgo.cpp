@@ -1,8 +1,7 @@
 #include<bits/stdc++.h>
 using namespace std;
-bool cycle(vector<vector<int>>& g,vector<int>& indeg,int v)
+void toplogicalSort(vector<vector<int>>& g,vector<int>& indeg)
 {
-    int count = 1;
     queue<int> q;
     for(int i=0;i<indeg.size();i++)
     {
@@ -15,7 +14,7 @@ bool cycle(vector<vector<int>>& g,vector<int>& indeg,int v)
     {
         int u = q.front();
         q.pop();
-        count++;
+        cout<<u<<" ";
         for(int nbr : g[u])
         {
             indeg[nbr]--;
@@ -25,11 +24,6 @@ bool cycle(vector<vector<int>>& g,vector<int>& indeg,int v)
             }
         }
     }
-    if(count==v)
-    {
-        return false;
-    }
-    return true;
 }
 int main()
 {
@@ -44,7 +38,6 @@ int main()
         g[u].push_back(v);
         indeg[v]++;
     }
-    bool ans = cycle(g,indeg,n);
-    cout<<ans;
+    toplogicalSort(g,indeg);
     return 0;
 }
