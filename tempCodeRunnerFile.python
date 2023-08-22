@@ -1,0 +1,55 @@
+mod = 7985896514
+
+def find(x, comp):
+    ans = 0
+    for y in range(2 * x, len(comp), x):
+        if comp[y] and comp[y] != comp[x]:
+            ans = (ans + y) % mod
+    return ans
+
+def dfs(i, j, a, visited, comp, id):
+    visited[i][j] = True
+    comp[a[i][j]] = id
+    if i - 1 >= 0 and not visited[i - 1][j] and a[i - 1][j] != -1:
+        dfs(i - 1, j, a, visited, comp, id)
+    if i + 1 < len(a) and not visited[i + 1][j] and a[i + 1][j] != -1:
+        dfs(i + 1, j, a, visited, comp, id)
+    if j - 1 >= 0 and not visited[i][j - 1] and a[i][j - 1] != -1:
+        dfs(i, j - 1, a, visited, comp, id)
+    if j + 1 < len(a) and not visited[i][j + 1] and a[i][j + 1] != -1:
+        dfs(i, j + 1, a, visited, comp, id)
+
+def find_total_sum(a):
+    n = len(a)
+    negs = sum(row.count(-1) for row in a)
+    visited = [[False for _ in range(n)] for _ in range(n)]
+    comp = [0] * (int(1e6) + 1)
+
+    id = 1
+    for i in range(n):
+        for j in range(n):
+            if not visited[i][j] and a[i][j] > 0:
+                dfs(i, j, a, visited, comp, id)
+                id += 1
+
+    ans = 0
+    for i in range(n):
+        for j in range(n):
+            if a[i][j] > 0:
+                cntrb = find(a[i][j], comp)
+                ans = (ans + cntrb) % mod
+
+    ans -= negs
+    ans %= mod
+    ans += mod
+    ans %= mod
+    return ans
+
+# Test example:
+a = [
+    [3, 1, 2],
+    [4, -1, 6],
+    [5, 7, 8]
+]
+result = find_total_sum(a) #
+print(result)

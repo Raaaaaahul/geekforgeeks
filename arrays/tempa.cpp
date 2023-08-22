@@ -12,7 +12,7 @@ int main()
     int ans = 0;
     for(int i=0;i<k;i++)
     {
-        ans = pq.top();
+        int ans = pq.top();
         pq.pop();
     }
     cout<<ans;

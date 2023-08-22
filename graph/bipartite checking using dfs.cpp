@@ -12,6 +12,7 @@ bool dfs(vector<vector<int>>& g,vector<int>& visited,int src,int color)
                 return false;
             }
         }
+        // if already visited and color matches with the adjacent node then =>
         else if(visited[nbr] == color)
         {
             return false;
