@@ -1,0 +1,49 @@
+// Entry point 
+
+hi bhai
+
+// bol bhai- prints the statements in console 
+
+ bol bhai “Welcome to GeeksforGeeks!”;
+
+ bol bhai “Let’s code in our Hindi Lingo using Bhailang”;
+
+// Declaring the Variables 
+
+  bhai ye hai a = 5;
+
+  bhai ye hai b = 3;
+
+// Sahi represents a boolean value True
+
+  bhai ye hai c = sahi; 
+
+  bhai ye hai d = galat;
+
+// loop 
+
+  jab tak bhai (b < 8) {
+
+        bol bhai b;
+
+       // if else construct
+
+       agar bhai (b == a){
+
+      bol bhai “b is equal to a”;
+
+     bol bhai c; 
+
+}
+
+    warna bhai 
+
+    bol bhai d ; 
+
+    b += 1;
+
+}
+
+ // exit point 
+
+bye bhai 
