@@ -63,6 +63,6 @@ int main()
 
     inorder(root);
     cout<<endl<<"height of tree is : "<<height(root)<<endl;
-    cout<<"diameter of the tree is :"<<diameter(root);
+    cout<<"diameter of the tree is :"<<diaEFF(root);
     return 0;
 }

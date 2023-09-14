@@ -120,6 +120,7 @@ void linebyline(Node* root)
         }
     }
 }
+//number of nodes
 int getSize(Node* root)
 {
     if(!root)
@@ -128,6 +129,7 @@ int getSize(Node* root)
     else
         return 1+getSize(root->left) + getSize(root->right);
 }
+
 int getMax(Node* root)
 {
     if(root==NULL)

@@ -9,7 +9,7 @@ int solve(vector<int>& arr,int n)
         prev_sum = max(prev_sum+arr[i],arr[i]);
         res = max(res,prev_sum);
     }
-    return res;
+    return res; 
 }
 int main()
 {

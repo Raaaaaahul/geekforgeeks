@@ -2,6 +2,7 @@
 using namespace std;
 int main()
 {
-    cout<<(1 and 2);
+    int i=5;
+    printf("%d",i=++i==6);
     return 0;
 }
