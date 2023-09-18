@@ -1,4 +1,4 @@
-#include<bits/stdc++.h>
+    #include<bits/stdc++.h>
 using namespace std;
 void solve(vector<int>& v,int n)
 {
