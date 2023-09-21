@@ -6,7 +6,8 @@
         "deque": "cpp",
         "string": "cpp",
         "vector": "cpp",
-        "iostream": "cpp"
+        "iostream": "cpp",
+        "ostream": "cpp"
     },
     "workbench.colorCustomizations": {
         "minimap.background": "#00000000",

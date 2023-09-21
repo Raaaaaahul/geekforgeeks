@@ -2,22 +2,13 @@
 using namespace std;
 int main()
 {
-    int a =40,b=80;
-    try
+    string a = "3";
+    string b = "30";
+    if(a+b>b+a)
     {
-        cin>>a>>b;
-        if(b==0)
-        {
-            throw b;
-        }
-        else
-        {
-            cout<<b%a;
-        }
+        cout<<a+b<<endl;
     }
-    catch(exception e)
-    {
-        e.what();
-    }
+    else
+        cout<<b+a;
     return 0;
 }

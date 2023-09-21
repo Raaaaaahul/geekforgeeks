@@ -1,5 +1,6 @@
 #include<bits/stdc++.h>
 using namespace std;
+int answer = 0;
 int partition(int *arr,int s,int e)
 {
     int cnt=0;
@@ -12,6 +13,7 @@ int partition(int *arr,int s,int e)
     }
     int pivotIdx = s + cnt;
     swap(arr[s],arr[pivotIdx]);
+    answer++;
 
     int i = s,j=e;
     while(i<pivotIdx and j>pivotIdx)
@@ -27,6 +29,7 @@ int partition(int *arr,int s,int e)
         if(i<pivotIdx and j>pivotIdx)
         {
             swap(arr[i++],arr[j--]);
+            answer++;
         }
     }
     return pivotIdx;
@@ -43,11 +46,12 @@ void quickSort(int *arr,int s,int e)
 }
 int main()
 {
-    int arr[10] = {5,7,69,63,42,28,9,11,17,28};
-    quickSort(arr,0,9);
-    for(int i=0;i<10;i++)   
+    int arr[4] = {2,8,5,4};
+    quickSort(arr,0,3);
+    for(int i=0;i<4;i++)   
     {
         cout<<arr[i]<<" ";
     }
+    cout<<endl<<answer;
     return 0;
 }
