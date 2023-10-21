@@ -27,7 +27,7 @@ int lcs(int n,string s,string t,vector<vector<int>>& dp)
 
 int main()
 {
-    string s = "leetcode";
+    string s = "AMMAMADAM";
     string t = s;
     reverse(t.begin(),t.end());
     int n = s.size();
