@@ -1,18 +1,24 @@
-def maxEven(num):
-    num = str(num)
-    odd_digits = [digit for digit in num if int(digit) % 2 != 0]
-    even_digits = [digit for digit in num if int(digit) % 2 == 0]
-    
-    if len(odd_digits) == 0:
-        return int(num)
-    
-    max_even_num = ""
-    for i in range(len(num)):
-        if i % 2 == 0:
-            max_even_num += pop(even_digits)
-        else:
-            max_even_num += pop(odd_digits)
-    
-    return int(max_even_num)
+def count_pairs_with_same_value(arr):
+    # Create a dictionary (map) to store the frequency of each element in the array
+    frequency_map = {}
 
-print(maxEven(121))
+    # Iterate through the array and update the frequency map
+    for num in arr:
+        if num in frequency_map:
+            frequency_map[num] += 1
+        else:
+            frequency_map[num] = 1
+
+    # Count the number of pairs with the same value
+    pair_count = 0
+    for frequency in frequency_map.values():
+        # For each frequency, calculate the number of pairs using nC2 formula
+        if frequency >= 2:
+            pair_count += (frequency * (frequency - 1)) // 2
+
+    return pair_count
+
+# Example usage:
+arr = [18, 0, 0, 18,18]
+result = count_pairs_with_same_value(arr)
+print("Number of pairs with the same value:", result)

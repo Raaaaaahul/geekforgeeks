@@ -1,69 +1,64 @@
-#include<bits/stdc++.h>
+#include<bits/stdc++.h> 
 using namespace std;
-struct Node{
-    int data;
-    Node* next;
-    Node(int x)
-    {
-        data = x;
-        next=NULL;
-    }
-};
 
-void traversal(Node* head)
+bool trio(int i,int j,int k,vector<vector<bool>>& vis)
 {
-    while(head!=NULL)
+    if(vis[i][j]==false or vis[j][i]==false)
     {
-        cout<<head->data<<" ";
-        head = head->next;
+        return false;
     }
-    cout<<endl;
+    if(vis[j][k]==false or vis[k][j]==false)
+    {
+        return false;
+    }
+    if(vis[i][k]==false or vis[k][i]==false)
+    {
+        return false;
+    }
+    return true;
 }
 
 
-Node* insEnd(Node* head,int val)
+int solve(int n,vector<vector<int>>& edges)
 {
-    Node* temp = new Node(val);
-    if(head==NULL)
+    vector<vector<bool>> vis(n+1,vector<bool>(n+1,false));
+    vector<int> degree(n+1,0);
+    vector<vector<int>> g(n+1);
+    for(int i=0;i<edges.size();i++)
     {
-        return temp;
+        int u = edges[i][0];
+        int v = edges[i][1];
+        vis[u][v] = true;
+        vis[v][u] = true;
+        degree[u]++;
+        degree[v]++;
     }
-    Node* curr = head;
-    while(curr->next!=NULL)
+    int result = 1e9;
+    for(int i=1;i<=n-2;i++)
     {
-        curr = curr->next;
+        for(int j=1;j<=n-1;j++)
+        {
+            for(int k = 1;k<=n;k++)
+            {
+                if(trio(i,j,k,vis))
+                {
+                    int count = 0;
+                    count += degree[i]-2;
+                    count += degree[j]-2;
+                    count += degree[k]-2;
+                    result = min(result,count);
+                }
+            }
+        }
     }
-    curr->next = temp;
-    return head;
+    return result==1e9?-1:result;
 }
-void printmiddle(Node* head)
-{
-    if(head==NULL)
-    {
-        return;
-    }
-    Node* slow = head;
-    Node* fast = head;
-    while(fast!=NULL and fast->next->next!=NULL)
-    {
-        slow = slow->next;
-        fast = fast->next->next;
-    }
-    cout<<slow->data;
-}
+
+
 int main()
 {
-    Node* head = new Node(10);
-    int n = 4;
-    while(n--)
-    {
-        int a;
-        cin>>a;
-        head = insEnd(head,a);
-    }
-    traversal(head);
-    printmiddle(head);    
-    // head = oddEvenList(head);
-    // traversal(head);
+    int n = 6;
+    vector<vector<int>> edges = {{1,2},{1,3},{3,2},{4,1},{5,2},{3,6}};
+    int ans = solve(n,edges);
     return 0;
 }

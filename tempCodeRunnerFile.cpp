@@ -1,29 +1,39 @@
 #include <iostream>
-#include <vector>
-#include <string>
 #include <cmath>
-
-std::vector<std::string> compareStrings(std::vector<std::string> vec1, std::vector<std::string> vec2) {
-    std::vector<std::string> result;
-    for (int i = 0; i < vec1.size(); i++) {
-        std::string res = "YES";
-        for (int j = 0; j < vec1[i].size(); j++) {
-            if (std::abs(vec1[i][j] - vec2[i][j]) > 3) {
-                res = "NO";
-                break;
-            }
-        }
-        result.push_back(res);
+using namespace std;
+int gcd(int a, int b) {
+    while (b) {
+        a = a % b;
+        std::swap(a, b);
     }
-    return result;
+    return a;
+}
+
+int lcm(int a, int b) {
+    return a / gcd(a, b) * b;
+}
+
+int minimumHappyNumber(int num1, int num2, int x, int y) {
+    int lcm_xy = lcm(x, y);
+    int n = std::ceil(std::max(num1, num2) / (double)lcm_xy) * lcm_xy; // Round up to the nearest multiple of lcm
+
+    while (true) {
+        if (n - num1 >= lcm_xy && n - num2 >= lcm_xy) {
+            return n;
+        }
+        n += lcm_xy; // Increment by lcm
+    }
 }
 
 int main() {
-    std::vector<std::string> vec1 = {"aaaaab"};
-    std::vector<std::string> vec2 = {"k"};
-    std::vector<std::string> result = compareStrings(vec1, vec2);
-    for (const auto &str : result) {
-        std::cout << str << std::endl;
-    }
+    // Example usage for the given input:
+    int Num1 = 1;
+    int Num2 = 3;
+    int X = 2;
+    int Y = 7;
+
+    int result = minimumHappyNumber(Num1, Num2, X, Y);
+    std::cout << "The minimum number N is: " << result << std::endl;
+
     return 0;
 }
